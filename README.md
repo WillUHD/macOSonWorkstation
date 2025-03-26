@@ -1,5 +1,4 @@
 # Install macOS on VMware Workstation
-###### For [The VMware Center](https://www.youtube.com/@vmwarecenter). 
 ### Step 1. Install Unlocker427
 ###### This is an add-on to VMware Workstation. To get the installer for Workstation and instructions to install it, head [here](https://github.com/WillUHD/InstallWorkstation/). 
 Unlocker will unlock the macOS feature for Workstation. 
@@ -9,7 +8,7 @@ Unlocker will unlock the macOS feature for Workstation.
 4. If Windows Defender pops up, hit "Learn More" and click "Open This Unsafe Program" to open it.
 5. Once opened, grant it administrator privileges to let it modify the VMware files. When it has finished, close the program. You have successfully unlocked VMware for Workstation! 
 ### Step 2. Download a macOS ISO
-You need a macOS ISO in order to install the system. If you don't have the ISO, I have a list of download links for most macOS versions [here](https://github.com/WillUHD/macOSISO).
+You need a macOS ISO in order to install the system. You can download ISOs from Apple or 3rd party sources. 
 ### Step 3. Create the Mac VM
 1. When you open Workstation, go ahead and create a new virtual machine.
 ![image](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/c22d2362-01c9-4e1b-8aca-2fd6e3e72ac6)
@@ -25,7 +24,29 @@ You need a macOS ISO in order to install the system. If you don't have the ISO, 
 ![image](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/60099bbe-4216-4bd4-a392-29ee48b0a48c)
 7. Go to your VM folder (that you've created) and go to the .VMX file. Open it using Notpad (or any other text editing software).
 ![Screenshot 2024-06-09 142745](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/4a20b74d-bc6f-4937-ba4a-f4d4431fa9df)
-8. Now, go [here](https://github.com/WillUHD/macOSWorkstationConfig) and enter the configurations for macOS.
+8. Now, enter the configurations for macOS.
+
+#### For Intel CPUs
+```vmx-for-intel
+smc.version = "0"
+smbios.reflectHost = "TRUE"
+hw.model = "MacBookPro14,3"
+```
+#### For AMD CPUs
+```vmx-for-amd
+smc.version = "0"
+cpuid.0.eax = "0000:0000:0000:0000:0000:0000:0000:1011"
+cpuid.0.ebx = "0111:0101:0110:1110:0110:0101:0100:0111"
+cpuid.0.ecx = "0110:1100:0110:0101:0111:0100:0110:1110"
+cpuid.0.edx = "0100:1001:0110:0101:0110:1110:0110:1001"
+cpuid.1.eax = "0000:0000:0000:0001:0000:0110:0111:0001"
+cpuid.1.ebx = "0000:0010:0000:0001:0000:1000:0000:0000"
+cpuid.1.ecx = "1000:0010:1001:1000:0010:0010:0000:0011"
+cpuid.1.edx = "0000:0111:1000:1011:1111:1011:1111:1111"
+smbios.reflectHost = "TRUE"
+hw.model = "MacBookPro14,3"
+```
+
 ![image](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/00a3c9cf-693d-40b2-bd59-55f6cf363537)
 9. Close Notepad and run the virtual machine. MacOS should boot up as regularly.
 ![image](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/45dad3b6-0cd5-40ff-aa97-800a33f54349)
