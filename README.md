@@ -26,13 +26,13 @@ You need a macOS ISO in order to install the system. You can download ISOs from 
 ![Screenshot 2024-06-09 142745](https://github.com/WillUHD/macOSonWorkstation/assets/134638202/4a20b74d-bc6f-4937-ba4a-f4d4431fa9df)
 8. Now, enter the configurations for macOS.
 
-#### For Intel CPUs
+For Intel CPUs
 ```vmx-for-intel
 smc.version = "0"
 smbios.reflectHost = "TRUE"
 hw.model = "MacBookPro14,3"
 ```
-#### For AMD CPUs
+For AMD CPUs
 ```vmx-for-amd
 smc.version = "0"
 cpuid.0.eax = "0000:0000:0000:0000:0000:0000:0000:1011"
